@@ -13,7 +13,8 @@ class App extends Component {
       { name: `Starlyn`, age: 21},
       { name: `David`, age: 15 }
     ],
-    otherState: `some other value`
+    otherState: `some other value`,
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -38,6 +39,13 @@ class App extends Component {
     })
   }
 
+  togglePersonHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({
+      showPersons: !doesShow
+    })
+  }
+
   render() {
 
     const style = {
@@ -48,25 +56,36 @@ class App extends Component {
       cursor: 'pointer'
     };
 
+    let persons = null;
+
+    // IF `showPersons` IS TRUE THE WE WILL MAKE `persons` NOT NULL
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age} />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            click={this.switchNameHandler.bind(this, 'Max!!!')}>My hobbies: racing</Person>
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+            change={this.nameChangeHandler}/>
+        </div>
+      );
+    }
+
     return (
       <div className='App'>
         <h1>Welcome</h1>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age} />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this, 'Max!!!')}>My hobbies: racing</Person>
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}
-          change={this.nameChangeHandler}/>
-
         <button
           style={style}
-          onClick={ () => this.switchNameHandler(`Maxamilian!!!`) }>Switch Name
+          onClick={ this.togglePersonHandler }>
+          Toggle Persons
         </button>
+         {persons}
       </div>
     );
 
