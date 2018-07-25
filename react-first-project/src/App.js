@@ -8,14 +8,14 @@ import UserOutput from './UserOutput/UserOutput';
 class App extends Component {
 
   state = {
-    usernames: 'supermax'
-  }
+    usernames: 'supermax',
+  };
 
   usernameChangeHandler = (event) => {
     this.setState({
-      usernames: event.target.value
-    })
-  }
+      usernames: event.target.value,
+    });
+  };
 
   render() {
     return (
