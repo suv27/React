@@ -64,7 +64,8 @@ class App extends Component {
   render() {
 
     const style = {
-      backgroundColor: 'white',
+      color: 'white',
+      backgroundColor: 'green',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -89,24 +90,25 @@ class App extends Component {
               change={(event) => this.nameChangeHandler(event, person.id) } />
             );
           })}
-          {/* <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age} />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-          />
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-            change={this.nameChangeHandler}/> */}
         </div>
       );
+
+      style.backgroundColor = 'red';
+    }
+
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red'); // classes = ['red']
+    }
+
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
     }
 
     return (
       <div className='App'>
         <h1>Welcome</h1>
+        <p className={classes.join(' ')}>This is really working</p>
         <button
           style={style}
           onClick={ this.togglePersonHandler }>
@@ -115,12 +117,6 @@ class App extends Component {
          {persons}
       </div>
     );
-
-    // TAKES AT LEATS 3 ELEMENTS
-    // FIRST('THE ELEMENT WE WANT TO RENDER TO THE DOM')
-    // SECOND('THE CONFIGURATION FOR THIS, A JS OBJECT[OPTIONAL]')
-    // THIRD('ANY AMOUNT OF CHILDREN [WHATS NESTED INSIDE THE DIV]')
-    //return React.createElement('div', {className: 'person'}, React.createElement('h1', null, 'Hi, I\'m a React app'));
   }
 }
 

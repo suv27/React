@@ -5,6 +5,7 @@
   "dependencies": {
     "depth": "^0.1.1",
     "nodemon": "^1.18.3",
+    "radium": "^0.24.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
