@@ -1,1 +1,16 @@
-import React { Component } from 'react';
+import React from 'react';
+import Person from './Person/Person';
+
+const persons = (props) => props.persons.map((person, index) => {
+    return (
+      // RENDERING A LIST OF PERSONS FROM AN ARRAY
+        <Person
+          click={() => props.clicked(index)}
+          name={person.name}
+          age={person.age}
+          key={person.id}
+          change={(event) => props.changed(event, person.id) } />
+    );
+  });
+
+export default persons;
