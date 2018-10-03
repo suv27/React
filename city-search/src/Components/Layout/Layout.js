@@ -6,7 +6,7 @@ import styled from 'styled-components';
 // IMPORTING COMPONENTS TO MY LAYOUT
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import PullingData from '../PullingData/PullingData';
+import SearchData from '../SearchData/SearchData';
 
 // INLINE CSS
 const Head = styled.div`
@@ -25,7 +25,7 @@ export default class Layout extends Component {
       <Body>
         <Head>
           <Header/>
-          <PullingData />
+          <SearchData />
           <Footer />
         </Head>
       </Body>
