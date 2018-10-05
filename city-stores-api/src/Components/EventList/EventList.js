@@ -4,6 +4,26 @@ import styled from 'styled-components';
 // IMPORTING COMPONENTS
 import Error404 from '../Error404/Error404';
 
+const OuterBox = styled.div`
+  width: 80%
+  border-left: 1px solid white
+  border-right: 1px solid white
+  margin: 85px auto
+`
+
+const Ul = styled.ul`
+  padding: 0
+`
+
+const Cards = styled.div`
+  width: 32%
+  display: inline-flex
+  border: 1px solid #F2F2F2
+  border-radius: 10px
+  list-style: none
+  margin-left: 10px
+`
+
 export default class EventList extends Component {
 
   // class constructor
@@ -40,15 +60,18 @@ export default class EventList extends Component {
     let id = 0;
 
     return(
-      <div>
-        <ul>
+      <OuterBox>
+        <Ul>
             {item.map(item => (
-              <li key={id+=1}>
-                <h1>{item.category_name} </h1>
-              </li>
+              <Cards>
+                <li key={id++}>
+                  <h1>{item.category_name} </h1>
+                  <p>{item.description}</p>
+                </li>
+              </Cards>
             ))}
-        </ul>
-      </div>
+        </Ul>
+      </OuterBox>
     )
   }
 };

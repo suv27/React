@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { injected } from 'styled-components';
+import styled from 'styled-components';
 
 const Head = styled.div`
   height: 80px;
