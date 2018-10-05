@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+// IMPORTING COMPONENTS
+import Error404 from '../Error404/Error404';
+
 export default class EventList extends Component {
 
   // class constructor
@@ -31,11 +34,7 @@ export default class EventList extends Component {
     // so we can have access to item and isLoaded from inside of the render
     var { isLoaded, item } = this.state;
     if(!isLoaded) {
-      return(
-        <div>
-          {console.log('Data is Loading...')}
-        </div>
-      )
+      return <Error404 />
     }
 
     let id = 0;
