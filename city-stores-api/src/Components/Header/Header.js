@@ -19,7 +19,7 @@ export default class Header extends Component{
     return(
       <Head>
         <Title>
-          Image Gallery
+          City Store - The Official Store of the City of New York
         </Title>
       </Head>
     )
