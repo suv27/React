@@ -6,8 +6,6 @@ import Error404 from '../Error404/Error404';
 
 const OuterBox = styled.div`
   width: 80%
-  border-left: 1px solid white
-  border-right: 1px solid white
   margin: 85px auto
 `
 
@@ -16,12 +14,22 @@ const Ul = styled.ul`
 `
 
 const Cards = styled.div`
-  width: 32%
+  width: 28%
+  height: 200px
+  color: #FFF
   display: inline-flex
   border: 1px solid #F2F2F2
   border-radius: 10px
   list-style: none
-  margin-left: 10px
+  padding: 1%
+  margin: 1%
+
+  :hover{
+    color: #000
+    background-color: #F2F2F2
+    box-shadow: 0 0 25px salmon
+    transition: all 0.4s ease;
+  }
 `
 
 export default class EventList extends Component {
@@ -67,6 +75,7 @@ export default class EventList extends Component {
                 <li key={id++}>
                   <h1>{item.category_name} </h1>
                   <p>{item.description}</p>
+                  <p>${item.unit_price}</p>
                 </li>
               </Cards>
             ))}

@@ -7,7 +7,7 @@ const Head = styled.div`
   background-color: #353a44;
   border-bottom: 1px solid salmon;
   top: 0;
-  position: absolute;
+  position: fixed;
 `
 const Title = styled.h1`
   color: salmon
@@ -19,7 +19,7 @@ export default class Header extends Component{
     return(
       <Head>
         <Title>
-          City Store - The Official Store of the City of New York
+          City Stores
         </Title>
       </Head>
     )
