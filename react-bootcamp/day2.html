@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Second React App</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type='text/babel'>
+
+      {/* statelss functional component */}
+      {/* ***************************** */}
+      function FriendsList (props){
+        return(
+          <div>
+            <h1>Active Friends</h1>
+            <ul>
+              {props.list.map((name) => (
+                <li key={name}>
+                  <span>{name}</span>
+                  <button onClick={() => props.onRemoveFriend(name)}>Remove</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      function NotMyFriends (props){
+        return(
+          <div>
+            <h1>Inactive Friends</h1>
+            <ul>
+              {props.list.map((name) => {
+                <span>{name}</span>
+                <button>Avtivate</button>
+              })}
+            </ul>
+          </div>
+        )
+      }
+
+      {/* stateful class component */}
+      {/* ************************ */}
+      class App extends React.Component{
+        constructor(props){
+          super(props)
+          this.state = {
+            friends: ['David', 'Angel', 'Jake'],
+            noFriends: ['Leidy', 'Caro'],
+            input: '',
+          }
+
+          /*
+            we dont know what the this key word is on handleRemoveFriend
+            so with .bind we are forcing it to be what we want which is the app component
+            or you can just use the arrow function
+          */
+          this.handleRemoveFriend = this.handleRemoveFriend.bind(this)
+          this.updateInput = this.updateInput.bind(this)
+          this.handleAddFriend = this.handleAddFriend.bind(this)
+
+        }
+
+        updateInput(event){
+            const valueOfInput = event.target.value;
+
+            // update the state of the input
+            this.setState({
+              input: valueOfInput
+            })
+        }
+
+
+        handleAddFriend(){
+
+          this.setState((currentState) => {
+            return {
+              friends: currentState.friends.concat([this.state.input]),
+              input: '',
+            }
+          })
+        }
+
+        /*
+          - Function that will be removing a friend from the array
+          - Pass a name as a parameter which is going to be the friend that will be remove
+          - Reset or update the state so the user can see the change on the UI
+        */
+        handleRemoveFriend(name){
+          // updating the state
+          this.setState((currentState) => {
+            return{
+              // returning a new item [] without name
+              friends: currentState.friends.filter((friend) => friend !== name)
+            }
+          })
+        }
+
+        render(){
+          return(
+            <div>
+              <input
+                type='text'
+                placeholder='new friend'
+                value={this.state.input}
+                onChange={this.updateInput}
+              />
+
+              <button onClick={this.handleAddFriend}>Summit</button>
+
+              <FriendsList
+                list={this.state.friends}
+                onRemoveFriend={this.handleRemoveFriend}
+              />
+
+              <NotMyFriends
+                list={this.state.noFriends}
+              />
+
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(
+        <App />,
+        document.getElementById('app')
+      )
+
+    </script>
+  </body>
+</html>
