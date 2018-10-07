@@ -1,22 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 // INLINE CSS
 const Head = styled.header`
-  color: palevioletred
+  color: #000
+  height: 80px
   font-size: 65px
   font-weight: bold
   font-family: monospace
-  padding: 10px
   background-color: papayawhip
 `
 
-export default class Header extends Component {
-  render() {
-    return (
-      <Head>
-        City Search
-      </Head>
-    );
-  }
+// color to show data 'palevioletred'
+
+const Header = () => {
+  return (
+    <Head>
+      City Search
+    </Head>
+  );
 };
+
+export default Header;

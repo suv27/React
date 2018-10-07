@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 //IMPORT CSS
@@ -13,12 +13,12 @@ const Foot = styled.footer`
   background-color: #fdefd2
 `
 
-export default class Footer extends Component{
-  render() {
-    return (
-      <Foot>
-        @Starlyn Urena Ventura
-      </Foot>
-    );
-  }
+const Footer = () => {
+  return (
+    <Foot>
+      @Starlyn Urena Ventura
+    </Foot>
+  );
 };
+
+export default Footer;

@@ -7,10 +7,9 @@ const Input = styled.input`
   padding: 15px
   margin-top: 10px
   font-size: 18px
-
 `
 
-export default class SearchData extends Component {
+export default class Data extends Component {
 
   // constructor of the pullingdata component
   constructor(props) {
