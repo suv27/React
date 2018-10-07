@@ -60,19 +60,20 @@ export default class EventList extends Component {
   render(){
 
     // so we can have access to item and isLoaded from inside of the render
-    var { isLoaded, item } = this.state;
+    let { isLoaded, item } = this.state;
     if(!isLoaded) {
       return <Error404 />
     }
 
+    // variables
     let id = 0;
 
     return(
       <OuterBox>
         <Ul>
             {item.map(item => (
-              <Cards>
-                <li key={id++}>
+              <Cards key={id++}>
+                <li>
                   <h1>{item.category_name} </h1>
                   <p>{item.description}</p>
                   <p>${item.unit_price}</p>
