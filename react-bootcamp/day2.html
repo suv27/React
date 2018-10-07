@@ -22,7 +22,7 @@
                 <li key={name}>
                   <span>{name}</span>
                   <button onClick={() => props.onRemoveFriend(name)}>Remove</button>
-                  <button>Desactivate</button>
+                  <button onClick={() => props.desactivateFriend(name)}>Desactivate</button>
                 </li>
               ))}
             </ul>
@@ -118,9 +118,18 @@
           this.setState((currentState) => {
             return{
               // activate the freind by adding it to the other array
-              friends: currentState.friends.filter((friends) => friends += name),
+              friends: currentState.friends.concat([name]),
               // removes that friend from the notFriends array
-              notFriends: currentState.notFriends.filter((notMyFriends) => notMyFriends !== name),
+              notFriends: currentState.notFriends.filter((myFriend) => myFriend !== name),
+            }
+          })
+        }
+
+        handleDesactivation = (name) => {
+          this.setState((currentState) => {
+            return{
+              notFriends: currentState.notFriends.concat([name]),
+              friends: currentState.friends.filter((NotMyFriend) => NotMyFriend !== name)
             }
           })
         }
@@ -141,6 +150,7 @@
               <FriendsList
                 list={this.state.friends}
                 onRemoveFriend={this.handleRemoveFriend}
+                desactivateFriend={this.handleDesactivation}
               />
 
               <NotMyFriends
