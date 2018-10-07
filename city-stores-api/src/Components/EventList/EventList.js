@@ -35,8 +35,8 @@ const Cards = styled.div`
 export default class EventList extends Component {
 
   // class constructor
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       item: [], // an array for the data that we will be fetching from the api
       isLoaded: false // to be able to know is the data has been loaded or not
