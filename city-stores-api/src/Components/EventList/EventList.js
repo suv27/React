@@ -17,18 +17,22 @@ const Cards = styled.div`
   width: 28%
   height: 200px
   color: #FFF
-  display: inline-flex
   border: 1px solid #F2F2F2
   border-radius: 10px
   list-style: none
   padding: 1%
-  margin: 1%
+  margin: 20px
+  display: inline-flex
 
   :hover{
     color: #000
     background-color: #F2F2F2
     box-shadow: 0 0 25px salmon
     transition: all 0.4s ease;
+  }
+
+  @media (max-width: 768px) {
+    width: 28%
   }
 `
 
