@@ -36,6 +36,21 @@ const Cards = styled.div`
   }
 `
 
+const ReadMore = styled.button`
+  color: red
+  background-color: transparent
+  border: 0
+  font-size: 16px
+
+  :hover{
+    color: #000
+    background-color: salmon
+    border: 0
+    border-radius: 7px
+    cursor: pointer
+  }
+`
+
 export default class EventList extends Component {
 
   // class constructor
@@ -43,29 +58,33 @@ export default class EventList extends Component {
     super(props);
     this.state = {
       item: [], // an array for the data that we will be fetching from the api
-      isLoaded: false // to be able to know is the data has been loaded or not
+      dataLoaded: false, // to be able to know is the data has been loaded or not
     }
   }
 
   // RUNS AFTER THE RENDER METHOD THEN UPDATES THE RENDER METHOD
   componentDidMount(){
-
     fetch('https://data.cityofnewyork.us/resource/gybi-64g5.json')
       .then(data => data.json())
       .then(json => {
         // setting the state of the json
         this.setState({
           item: json,
-          isLoaded: true
+          dataLoaded: true
         })
       })
   }
 
+  shrinkText = (text, length) => {
+    let shrinkText = text.substring(0, 182);
+    return shrinkText;
+  }
+
   render(){
 
-    // so we can have access to item and isLoaded from inside of the render
-    let { isLoaded, item } = this.state;
-    if(!isLoaded) {
+    // so we can have access to item and dataLoaded from inside of the render
+    let { dataLoaded, item } = this.state;
+    if(!dataLoaded) {
       return <Error404 />
     }
 
@@ -75,11 +94,16 @@ export default class EventList extends Component {
     return(
       <OuterBox>
         <Ul>
-            {item.map(item => (
+            {item.map((item) => (
               <Cards key={id++}>
                 <li>
-                  <h1>{item.category_name} </h1>
-                  <p>{item.description}</p>
+                  <h2>{item.category_name}</h2>
+                  <p>
+                    {this.shrinkText(item.description, 180)}
+                    <ReadMore>
+                      Read More...
+                    </ReadMore>
+                  </p>
                   <p>${item.unit_price}</p>
                 </li>
               </Cards>
