@@ -5,34 +5,35 @@ import styled from 'styled-components';
 import Error404 from '../Error404/Error404';
 
 const OuterBox = styled.div`
-  width: 80%
-  margin: 85px auto
+  width: 90%
+  border: 1px solid #fff
+  margin: 100px auto
 `
 
 const Ul = styled.ul`
   padding: 0
+  margin: 0
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap;
+  justify-content: space-evenly
 `
 
 const Cards = styled.div`
-  width: 28%
+  width: 350px
   height: 200px
   color: #FFF
   border: 1px solid #F2F2F2
   border-radius: 10px
   list-style: none
-  padding: 1%
+  padding: 15px
   margin: 20px
-  display: inline-flex
 
   :hover{
     color: #000
     background-color: #F2F2F2
     box-shadow: 0 0 25px salmon
     transition: all 0.4s ease;
-  }
-
-  @media (max-width: 768px) {
-    width: 28%
   }
 `
 
