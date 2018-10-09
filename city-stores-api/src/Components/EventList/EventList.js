@@ -22,12 +22,13 @@ const Ul = styled.ul`
 const Cards = styled.div`
   width: 350px
   height: 200px
-  color: #FFF
+  color: #000
   border: 1px solid #F2F2F2
   border-radius: 10px
   list-style: none
   padding: 15px
   margin: 20px
+  background: linear-gradient(35deg, #CCFFFF, #FFCCCC);
 
   :hover{
     color: #000
