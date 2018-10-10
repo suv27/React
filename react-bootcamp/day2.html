@@ -5,6 +5,7 @@
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
+
   </head>
   <body>
     <div id="app"></div>
@@ -54,7 +55,6 @@
           this.state = {
             friends: ['David', 'Angel', 'Jake'],
             notFriends: ['Leidy', 'Caro'],
-            empty: [],
             input: '',
           }
 
@@ -67,6 +67,16 @@
           // this.updateInput = this.updateInput.bind(this)
           // this.handleAddFriend = this.handleAddFriend.bind(this)
           // this.handleClear = this.handleClear.bind(this);
+          console.log("---constructor---");
+        }
+
+        // after render
+        componentDidMount(){
+          console.log("---componentDidMount---");
+        }
+
+        componentDidUpdate(){
+          console.log("---componentDidUpdate---");
         }
 
         updateInput = (event) => {
@@ -108,8 +118,8 @@
           this.setState((currentState) => {
             return{
               // returning empty strings
-              friends: currentState.friends = this.state.empty,
-              notFriends: currentState.notFriends = this.state.empty,
+              friends: [],
+              notFriends: [],
             }
           })
         }
@@ -135,6 +145,7 @@
         }
 
         render(){
+          console.log("---render---");
           return(
             <div>
               <input
@@ -144,8 +155,10 @@
                 onChange={this.updateInput}
               />
 
-              <button onClick={this.handleAddFriend}>Summit</button>
-              <button onClick={this.handleClear}>Clear All</button>
+              <div>
+                <button onClick={this.handleAddFriend}>Summit</button>
+                <button onClick={this.handleClear}>Clear All</button>
+              </div>
 
               <FriendsList
                 list={this.state.friends}
