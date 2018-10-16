@@ -10,7 +10,59 @@
   <body>
     <div id="app"></div>
 
+    <script>
+      window.API = {
+        fetchFriends() {
+          return new Promise((res, rej) => {
+            const friends = [
+              'David',
+              'Angel',
+              'Jake',
+              'Pedro',
+              'Arrieta',
+            ]
+
+            setTimeout(() => res(friends), 2000)
+
+          })
+        }
+      }
+    </script>
+
     <script type='text/babel'>
+
+      {/* loading component for our fake animation */}
+      class Loading extends React.Component{
+        constructor(props){
+          super(props)
+
+          this.state = {
+            text: 'Loading',
+          }
+        }
+
+        componentDidMount(){
+          const stopper = this.state.text + '...'
+
+          this.interval = window.setInterval(() => {
+            this.state.text === stopper
+              ? this.setState({text: 'Loading'})
+              : this.setState(() => {
+                return{
+                  text: currentState.text + '.'
+                }
+              })
+            }, 300)
+        }
+
+        componentWillUnMount(){
+          window.clearInterval(this.interval)
+        }
+
+        render(){
+          return <p>{this.state.text}</p>
+        }
+      }
 
       {/* statelss functional component */}
       {/* ***************************** */}
@@ -53,9 +105,10 @@
         constructor(props){
           super(props)
           this.state = {
-            friends: ['David', 'Angel', 'Jake'],
+            friends: [],
             notFriends: ['Leidy', 'Caro'],
             input: '',
+            loading: true,
           }
 
           /*
@@ -73,6 +126,15 @@
         // after render
         componentDidMount(){
           console.log("---componentDidMount---");
+
+          API.fetchFriends()
+            .then((friends) => {
+              // console.log('FRIENDS', friends);
+              this.setState({
+                friends,
+                loading: false,
+              })
+            })
         }
 
         componentDidUpdate(){
@@ -150,6 +212,11 @@
 
         render(){
           console.log("---render---");
+
+          if(this.state.loading === true){
+            return <Loading />
+          }
+
           return(
             <div>
               <input
