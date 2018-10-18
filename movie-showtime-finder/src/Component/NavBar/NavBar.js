@@ -40,6 +40,7 @@ const Line2 = styled.div`
   background-color: #FFF
   position: relative
   bottom: 7px
+  left: -1px
   transform: rotate(-45deg)
 `
 
