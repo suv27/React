@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Left = styled.div`
   width: 30%;
   height: 100vh;
-  background-color: red;
+  background-color: #ff9999;
 `
 
 export default class ListOfComponents extends React.Component{
