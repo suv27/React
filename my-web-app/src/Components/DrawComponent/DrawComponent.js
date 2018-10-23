@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Right = styled.div`
   width: 70%;
@@ -15,7 +15,6 @@ export default class DrawComponent extends React.Component{
 
     }
   }
-
 
   render(){
     return(

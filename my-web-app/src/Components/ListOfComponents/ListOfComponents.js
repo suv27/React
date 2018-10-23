@@ -1,5 +1,6 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import MLB from '../MLB/MLB';
 
 const Left = styled.div`
   width: 30%;
@@ -16,10 +17,11 @@ export default class ListOfComponents extends React.Component{
     }
   }
 
-
   render(){
     return(
-      <Left />
+      <Left>
+        <MLB />
+      </Left>
     )
   }
 }
