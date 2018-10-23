@@ -4,12 +4,18 @@ import styled from 'styled-components';
 const MLBwrap = styled.div`
     width: 150px
     height: 50px
-    color: white
+    color: #fff
+    margin-top: 50px
     background-color: #000
-    border: 1px solid white
+    border: 1px solid #fff
     text-align: center
-    display: flex
-    align-items: center
+
+    :hover{
+        color: #000
+        background-color: #fff
+        border: 1px solid #000
+        cursor: pointer
+    }
 `
 
 export default class MLB extends React.Component{
@@ -18,15 +24,29 @@ export default class MLB extends React.Component{
         this.state = {
             showData: false,
         }
+
+        this.componentHandler = this.componentHandler.bind(this);
+    }
+
+    // eventlistener that toggles on and off a button or bool value
+    componentHandler(){
+        this.setState({
+            showData: true,
+        })
+        let { showData } = this.state;
+        if(showData){
+            return( <p>Hello World</p> )
+        }
     }
 
     render(){
 
-        // eventlistener that toggles on and off a button or bool value
+
+        
 
         return(
-            <MLBwrap>
-                <p>I am from MLB</p>
+            <MLBwrap onClick={this.componentHandle}>
+                <p>MLB</p>
             </MLBwrap>
         )
     }
