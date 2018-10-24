@@ -41,11 +41,8 @@ export default class MLB extends React.Component{
 
     render(){
 
-
-        
-
         return(
-            <MLBwrap onClick={this.componentHandle}>
+            <MLBwrap onClick={this.componentHandler}>
                 <p>MLB</p>
             </MLBwrap>
         )

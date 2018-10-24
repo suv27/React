@@ -24,7 +24,7 @@ export default class ListOfComponents extends React.Component{
 
     return(
       <Left>
-        <MLB onClick={this.componentHandler}/>
+        <MLB onClick={this.props.onClick}/>
       </Left>
     )
   }
