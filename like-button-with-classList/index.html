@@ -10,6 +10,24 @@
         <script src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
 
         <!-- CSS STYLING FOR THE COMPONENT -->
+        <style>
+            .btn-wrap{
+                width: 120px;
+                height: 60px;
+                color: black;
+                margin: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid salmon;
+                background-color: bisque;
+            }
+            .btn-wrap:hover{
+                color: bisque;
+                border: 1px solid black;
+                background-color: salmon;
+            }
+        </style>
     </head>
     <body>
         <div id="root"></div>
@@ -32,7 +50,7 @@
 
                 render(){
                     return(
-                        <div>
+                        <div className="btn-wrap">
                             <h1 onClick={this.likeToggleHanddler}>Like | <span>{this.state.count}</span></h1>
                         </div>
                     )
