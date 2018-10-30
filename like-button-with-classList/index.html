@@ -1,8 +1,8 @@
-<!DOCTYPE <html>
+<!DOCTYPE html>
 <html>
     <head>
         <!-- TITLE -->
-        <title>Line Button Component</title>
+        <title>Like Button Component</title>
 
         <!-- REACT SCRIPTS THAT ARE NEED IT -->
         <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
@@ -15,17 +15,22 @@
                 width: 120px;
                 height: 60px;
                 color: black;
-                margin: auto;
+                margin: 200px auto;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 border: 1px solid salmon;
                 background-color: bisque;
+                box-shadow: 0 0 100px #d4ccb4;
             }
             .btn-wrap:hover{
                 color: bisque;
                 border: 1px solid black;
                 background-color: salmon;
+                box-shadow: 0 0 100px #000;
+            }
+            .liked{
+                color: blue;
             }
         </style>
     </head>
@@ -46,12 +51,14 @@
                     this.setState({
                         count: count + 1,
                     })
+                    var node = ReactDOM.findDOMNode(this.refs.btn);
+                    node.classList.toggle('liked');
                 }
 
                 render(){
                     return(
-                        <div className="btn-wrap">
-                            <h1 onClick={this.likeToggleHanddler}>Like | <span>{this.state.count}</span></h1>
+                        <div className="btn-wrap"  onClick={this.likeToggleHanddler}>
+                            <h1>Like | <span>{this.state.count}</span></h1>
                         </div>
                     )
                 }
