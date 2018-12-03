@@ -29,10 +29,7 @@
         }
         img{
             width: 100%;
-            height: 130px;
-            border-radius: 20px;
             border: 1px solid orange;
-            margin-right: 2px;
         }
         .title{
             height: 40%;
@@ -64,10 +61,30 @@
         }
 
         class Description extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    likeCount: 0,
+                }
+            }
+            
+            handleLikeButton = () =>{
+                let { likeCount } = this.state;
+                this.setState({
+                    likeCount: likeCount + 1
+                })
+            }
+
             render(){
+                let { likeCount } = this.state;
                 return(
                     <div className="description">
-                        <p>{this.props.description}</p>
+                        <div>
+                            <p>{this.props.description}</p>
+                        </div>
+                        <div>
+                            <button onClick={this.handleLikeButton}>Like | {likeCount} </button>
+                        </div>
                     </div>
                 )
             }
