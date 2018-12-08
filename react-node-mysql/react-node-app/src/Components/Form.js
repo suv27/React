@@ -17,24 +17,20 @@ export default class Form extends Component{
 
   render(){
 
-    let { users } = this.state;
-
-    return(
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Usernames</th> |
-              <th>Passcodes</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((username, passcode) =>
-              <tr><td>{username}</td><td>{passcode}</td></tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-    )
-  }
+    let { user } = this.state;
+    if(user.length !== 0){
+      return(
+        <div>
+          {console.log('Not Empty')}
+        </div>
+      )
+    } else{
+        return(
+          <div>
+            {console.log(`Users is ${user}`)}
+            // {user.map(x => console.log('User: ', x.username))}
+          </div>
+        )
+      }
+    }
 }
