@@ -69,7 +69,6 @@ export default class EventList extends Component {
     fetch('https://data.cityofnewyork.us/resource/gybi-64g5.json')
       .then(data => data.json())
       .then(json => {
-        // setting the state of the json
         this.setState({
           item: json,
           dataLoaded: true
@@ -83,15 +82,12 @@ export default class EventList extends Component {
   }
 
   render(){
-
-    // so we can have access to item and dataLoaded from inside of the render
+    let id = 0;
     let { dataLoaded, item } = this.state;
+    
     if(!dataLoaded) {
       return <Error404 />
     }
-
-    // variables
-    let id = 0;
 
     return(
       <OuterBox>
